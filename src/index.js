@@ -59,6 +59,18 @@ function App() {
     );
 }
 
+function Header() {
+
+}
+
+function Menu() {
+
+}
+
+function Foorer() {
+
+}
+
 function Pizza() {
     return (<div>
         <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
