@@ -93,15 +93,15 @@ function Footer() {
     // if (hour >= openHour && hour <= closeHour) alert("We're Currently Open");
     // else alert("Sorry, We're Currently Closed!")
     return <footer className="footer">
-        {isOpen ? (<Order closeHour={closeHour} />) : <div>
+        {isOpen ? (<Order closeHour={closeHour} openHour={openHour} />) : <div>
             <p>We're Currently Closed, Order or Visit Us Tommorow between {openHour}:00 - {closeHour}:00.</p>
         </div>}
     </footer>
     // return React.createElement('footer', null, "We're Currently Closed!")
 }
-function Order(props) {
+function Order({ openHour, closeHour }) {
     return (<div className="order">
-        <p>We're Open Until {props.closeHour}:00, Come visit us or order online.</p>
+        <p>We're Open from {openHour}:00 - {closeHour}:00, Come visit us or order online.</p>
         <button className="btn">Order</button>
     </div >
     );
