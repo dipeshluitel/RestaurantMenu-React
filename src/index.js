@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 
 const pizzaData = [
@@ -50,7 +51,7 @@ const pizzaData = [
 
 function App() {
     return (
-        <div>
+        <div className="container">
             {/* <h1>Hello React</h1> */}
             <Header />
             <Menu />
@@ -60,18 +61,20 @@ function App() {
 }
 
 function Header() {
-    const styleHeader = { color: "red", fontSize: "48px", textTransform: "upperCase" }
-    return <h1 style={styleHeader}>Fast React Pizza Co.</h1>
+    // const styleHeader = { color: "red", fontSize: "48px", textTransform: "upperCase" }
+    const styleHeader = {}
+    return (<header className="header"><h1 style={styleHeader}>Fast React Pizza Co.</h1></header>);
 }
 
 function Menu() {
-    return (<div><h2>Our Menu</h2>
+    return (<main className="menu">
+        <h2>Our Menu</h2>
         <Pizza />
         <Pizza />
         <Pizza />
         <Pizza />
 
-    </div>);
+    </main>);
 
 }
 
@@ -81,14 +84,14 @@ function Footer() {
     const closeHour = 20
     if (hour >= openHour && hour <= closeHour) alert("We're Currently Open");
     else alert("Sorry, We're Currently Closed!")
-    return <footer>{new Date().toLocaleTimeString()}. We're Currently <strong> Closed! </strong></footer>
+    return <footer className="footer">{new Date().toLocaleTimeString()}. We're Currently <strong> Closed! </strong></footer>
     // return React.createElement('footer', null, "We're Currently Closed!")
 }
 
 function Pizza() {
     return (<div>
         <img src="pizzas/spinaci.jpg" alt="Pizza Spinaci" />
-        <h2>Pizza Spinaci</h2>
+        <h3>Pizza Spinaci</h3>
         <p>Bread with italian olive oil and rosemary</p>
     </div>);
 }
