@@ -67,12 +67,25 @@ function Header() {
 }
 
 function Menu() {
+
+    const pizza = pizzaData;
+    // const pizza = [];
+    const numPizzas = pizza.length;
+
     return (<main className="menu">
         <h2>Our Menu</h2>
+        {numPizzas > 0 ? (
+            <>
 
-        <ul className="pizzas">
-            {pizzaData.map((pizza) => <Pizza pizzaObj={pizza} key={pizza.name} />)}
-        </ul>
+                <p>Fast React Pizza Co. Provides wide range of Pizzas, made all from our stone oven, all organic and delicious maintaining the authentic taste</p>
+
+                <ul className="pizzas">
+                    {pizzaData.map((pizza) => <Pizza pizzaObj={pizza} key={pizza.name} />)}
+                </ul>
+            </>
+        ) :
+            <p>We're Currently Working on our menu. Please come back later!!</p>
+        }
 
 
 
@@ -107,16 +120,17 @@ function Order({ openHour, closeHour }) {
     );
 }
 
-function Pizza(props) {
-    return (<div className="pizza">
-        <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
-        <li>
-            <h3>{props.pizzaObj.name}</h3>
-            <p>{props.pizzaObj.ingredients}</p>
-            <span>{props.pizzaObj.price}</span>
-        </li>
+function Pizza({ pizzaObj }) {
+    return (<li className={`pizza ${pizzaObj.soldOut ? 'sold-out' : ''}`} >
+        <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+        <div>
+            <h3>{pizzaObj.name}</h3>
+            <p>{pizzaObj.ingredients}</p>
+            {/* {pizzaObj.soldOut ? (<span>SOLD OUT</span>) : (<span>{pizzaObj.price}</span>)} */}
+            <span>{pizzaObj.soldOut ? 'SOLD OUT' : pizzaObj.price}</span>
+        </div>
 
-    </div>);
+    </li >);
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
