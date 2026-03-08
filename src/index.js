@@ -60,7 +60,8 @@ function App() {
 }
 
 function Header() {
-    return <h1>Fast React Pizza Co.</h1>
+    const styleHeader = { color: "red", fontSize: "48px", textTransform: "upperCase" }
+    return <h1 style={styleHeader}>Fast React Pizza Co.</h1>
 }
 
 function Menu() {
@@ -79,7 +80,7 @@ function Footer() {
     const openHour = 10
     const closeHour = 20
     if (hour >= openHour && hour <= closeHour) alert("We're Currently Open");
-    else alert("Sorry:-(, We're Closed!")
+    else alert("Sorry, We're Currently Closed!")
     return <footer>{new Date().toLocaleTimeString()}. We're Currently <strong> Closed! </strong></footer>
     // return React.createElement('footer', null, "We're Currently Closed!")
 }
